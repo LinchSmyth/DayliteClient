@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    daylite_client (0.1.1)
+    daylite_client (0.0.1)
       faraday (>= 0.8, <= 0.9.2)
       her (~> 0.9)
 
