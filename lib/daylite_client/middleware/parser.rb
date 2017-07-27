@@ -13,11 +13,15 @@ module DayliteClient
           # daylite may return object or array(with objects or strings),
           # so we need to handle it and process only objects
           if original_json.is_a?(Array)
-            json = original_json.map do |item|
-              item.is_a?(Hash) ?
-                item.deep_transform_keys{ |k| string_to_snakecase(k.to_s).to_sym } : item
+            json = {}
+            original_json.each do |item|
+              if item.is_a?(Hash)
+                (json[:data] ||= []).push(item.deep_transform_keys{ |k| string_to_snakecase(k.to_s).to_sym })
+              else
+                json[:data] ||= {}
+                (json[:data][:collection] ||= []).push(item)
+              end
             end
-            json = { data: { collection: json } }
           else
             json = original_json.deep_transform_keys{ |k| string_to_snakecase(k.to_s).to_sym }
             json = {
