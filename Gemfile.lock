@@ -33,7 +33,7 @@ GEM
       multi_json (~> 1.7)
     i18n (0.8.6)
     method_source (0.8.2)
-    minitest (5.10.2)
+    minitest (5.10.3)
     multi_json (1.12.1)
     multipart-post (2.0.0)
     pry (0.10.4)
